@@ -1,0 +1,11 @@
+# Source JPEGs — regenerable from "CV 1.pdf"; the deployed site uses pages/*.webp
+pages/*.jpg
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Firebase local state
+.firebase/
+*.log

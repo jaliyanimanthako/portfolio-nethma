@@ -1,0 +1,14 @@
+StPageFlip v2.0.0 — local hardcover positioning correction
+
+The original HTML hardcover renderer uses a vertical translation of zero,
+while stationary pages use the centered book rectangle's top coordinate.
+Hovering a cover corner or starting a cover turn therefore moves the cover
+to the top of the container. The two hardcover shadows have the same issue.
+
+Corrections in page-flip.browser.js:
+- drawHard: use the book rectangle's top for both cover orientations.
+- drawHard: also use the book rectangle's left for left-oriented pages.
+- drawHardInnerShadow / drawHardOuterShadow: set top to the book rectangle top.
+
+The original MIT license is preserved in LICENSE-StPageFlip.txt.
+Upstream bundle: https://github.com/Nodlik/StPageFlip/releases/download/v2.0.0/page-flip.browser.js

@@ -1,0 +1,11 @@
+Page-turn effect reference: Heyzine's public flipbook demo
+https://heyzine.com/
+https://heyzine.com/flip-book/dce36e099f.html
+
+Original audio asset (medium page flip):
+https://heyzine.com/flipbook/snd/flip-ct-md.mp3
+Retrieved 2026-10-08 at the user's request to match the Heyzine reference.
+
+page-flip.mp3 is an unmodified local copy. page-flip-data.js embeds those same
+MP3 bytes so browsers can decode them offline without fetching a file:// URL.
+This audio is separate from the MIT-licensed StPageFlip JavaScript library.
