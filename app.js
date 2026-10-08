@@ -146,7 +146,10 @@
   async function initialize() {
     try {
       if (!window.St || !St.PageFlip) throw new Error('The local page-flip.browser.js library is missing.');
-      await Promise.all(pages.map(src => new Promise((resolve, reject) => {
+      // Only the cover and first spread block the reveal. The remaining pages
+      // stream in behind the book, so a visitor on a network connection is not
+      // held at the loading message until all 27 images have arrived.
+      await Promise.all(pages.slice(0, 3).map(src => new Promise((resolve, reject) => {
         const image = new Image(); image.onload = resolve;
         image.onerror = () => reject(new Error(`Could not load ${src}. Keep the pages folder beside index.html.`));
         image.src = src;
@@ -188,6 +191,7 @@
         element.className = 'book-page';
         const image = document.createElement('img');
         image.src = src; image.alt = `Portfolio page ${i + 1}`; image.draggable = false;
+        image.decoding = 'async'; image.fetchPriority = i < 3 ? 'high' : 'low';
         element.append(image); $('book').append(element);
         return element;
       });
