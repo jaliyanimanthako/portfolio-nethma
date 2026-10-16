@@ -45,4 +45,6 @@ These are attribution links only. The viewer makes no network requests.
 
 To replace or add pages, edit the pages array in app.js and update the page
 totals in index.html. Images should have matching landscape proportions.
+When replacing images, update their version in app.js and the cover preload
+in index.html, then bump the app.js script version to refresh cached copies.
 Image pages do not expose selectable text; use the original PDF when needed.
