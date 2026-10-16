@@ -4,30 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
-  <title>CV 1 · Landscape Architecture Portfolio</title>
-  <link rel="stylesheet" href="styles.css?v=4">
+  <title>Landscape Architecture Portfolio</title>
+  <link rel="stylesheet" href="styles.css?v=7">
   <link rel="preload" as="image" href="pages/page-01.webp" fetchpriority="high">
   <script src="page-flip.browser.js?v=3" defer></script>
   <script src="sounds/page-flip-data.js" defer></script>
-  <script src="app.js?v=6" defer></script>
+  <script src="app.js?v=10" defer></script>
 </head>
 <body>
   <main>
     <div class="stage" id="stage">
-      <div id="book" role="img" aria-label="Portfolio flipbook, page 1 of 27"></div>
+      <div class="drawing-board" aria-hidden="true">
+        <div class="board-grid"></div>
+        <div class="board-frame"></div>
+        <div class="board-ruler"></div>
+        <img class="contours contours-left" src="assets/contours.svg" alt="">
+        <img class="contours contours-right" src="assets/contours.svg" alt="">
+        <svg class="north-mark" viewBox="0 0 36 72" fill="none">
+          <text x="18" y="11" text-anchor="middle">N</text>
+          <path d="M18 21V64M9 43L18 21L27 43L18 37Z"/>
+          <path d="M9 43L18 21V37Z" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div id="book" role="img" aria-label="Portfolio flipbook, page 1 of 39"></div>
       <p id="loading" role="status">Preparing your portfolio…</p>
     </div>
     <nav class="controls" aria-label="Book controls">
       <button id="previous" aria-label="Previous pages" title="Previous pages (Left arrow)" disabled>← <span>Previous</span></button>
-      <div class="page-control"><label for="page-select">Page</label><select id="page-select" aria-label="Go to page" disabled></select><span class="total">/ 27</span></div>
+      <div class="page-control"><label for="page-select">Page</label><select id="page-select" aria-label="Go to page" disabled></select><span class="total">/ 39</span></div>
       <button id="next" aria-label="Next pages" title="Next pages (Right arrow)" disabled><span>Next</span> →</button>
       <button id="read" aria-label="Enlarge page" title="Enlarge page to read details" disabled><span class="mobile-icon" aria-hidden="true">⤢</span><span class="button-label">Enlarge page</span></button>
       <button id="sound" aria-pressed="true" title="Toggle page-flipping sound">Sound on</button>
       <button id="fullscreen" aria-label="Toggle fullscreen" title="Toggle fullscreen">⛶ <span>Fullscreen</span></button>
     </nav>
-    <span id="page-status" class="sr-only" aria-live="polite">Page 1 of 27</span>
+    <span id="page-status" class="sr-only" aria-live="polite">Page 1 of 39</span>
     <p id="error" role="alert" hidden></p>
-    <noscript><p>Enable JavaScript to turn pages, or <a href="CV 1.pdf">open the original PDF</a>.</p></noscript>
+    <noscript><p>Enable JavaScript to view and turn the portfolio pages.</p></noscript>
   </main>
   <dialog id="reader" aria-label="Enlarged page reader">
     <div class="reader-toolbar"><button id="reader-prev" aria-label="Previous enlarged page">←</button><span id="reader-status" aria-live="polite"></span><button id="reader-next" aria-label="Next enlarged page">→</button><button id="zoom" aria-pressed="false">Zoom in</button><button id="close-reader">Close ✕</button></div>

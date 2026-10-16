@@ -1,4 +1,4 @@
-CV 1 — OFFLINE PORTFOLIO FLIPBOOK
+LANDSCAPE ARCHITECTURE — OFFLINE PORTFOLIO FLIPBOOK
 
 Open index.html in Chrome, Edge, Firefox, or Safari.
 No installation, internet connection, or local server is required.
@@ -6,19 +6,21 @@ If using the ZIP, extract the entire folder first. Keep all files together.
 
 CONTROLS
 - Click a page, drag a corner, swipe, or use Previous / Next.
+- Hover near an outer page corner for a silent preview. The book stays in
+  position until you intentionally turn a page; hovering does not play sound.
 - Page turns play the medium page-turn effect from the Heyzine demo.
   Use Sound on / Sound off to mute.
   Sound starts after you interact with the book. Your preference is remembered
   when browser storage is available. The recording is stored locally and works offline.
 - Left / Right arrow keys turn pages. Home / End jump to the ends.
-- The page selector jumps to any of the 27 original PDF pages.
+- The page selector jumps to any of the 39 portfolio pages.
 - On wide screens, inner pages appear as a spread. Narrow screens show one page.
 - Enlarge page opens the selected page in a reading view. Zoom in shows its
   full image resolution; scroll to inspect details. Escape closes the reader.
-- The viewer shows only the book and compact controls on a plain white screen.
+- The viewer uses a quiet architectural drawing-board background with a fine
+  grid, contour lines, drafting marks, and compact controls.
 - On phones, swipe to turn pages; rotate to landscape for a larger page.
   Tap the expand icon to enlarge details. Sound begins after interaction.
-- The original CV 1.pdf is also included separately in this folder.
 
 SHARING WITH MOBILE READERS
 Publish this folder on a static website host and share its HTTPS link.
@@ -28,9 +30,8 @@ The local package does not create a public link until it is hosted.
 
 CONTENTS
 index.html, styles.css, app.js: local book viewer.
-pages/page-01.jpg through page-27.jpg: PDF pages rendered at 160 dpi,
-  JPEG quality 92 (1871 x 1324 pixels), in their original order.
-CV 1.pdf: original, unmodified PDF.
+pages/page-01.webp through page-39.webp: optimized copies of portfolio1/1.png
+  through portfolio1/39.png (1753 x 1240 pixels), in numeric order.
 page-flip.browser.js: StPageFlip v2.0.0 with a local cover-position fix.
 VENDOR-PATCHES.txt: details of the cover and shadow coordinate correction.
 LICENSE-StPageFlip.txt: its MIT license.
