@@ -1,7 +1,7 @@
 /* All assets use relative file paths so index.html also works with file://. */
 (() => {
   'use strict';
-  const pages = Array.from({ length: 39 }, (_, i) => `pages/page-${String(i + 1).padStart(2, '0')}.webp`);
+  const pages = Array.from({ length: 39 }, (_, i) => `pages/page-${String(i + 1).padStart(2, '0')}.webp?v=faf8ce4b44b1`);
   const $ = id => document.getElementById(id);
   const select = $('page-select');
   const reader = $('reader');
