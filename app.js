@@ -1,7 +1,7 @@
 /* All assets use relative file paths so index.html also works with file://. */
 (() => {
   'use strict';
-  const pages = Array.from({ length: 27 }, (_, i) => `pages/page-${String(i + 1).padStart(2, '0')}.webp`);
+  const pages = Array.from({ length: 39 }, (_, i) => `pages/page-${String(i + 1).padStart(2, '0')}.webp`);
   const $ = id => document.getElementById(id);
   const select = $('page-select');
   const reader = $('reader');
@@ -15,6 +15,7 @@
   let paperBuffer;
   let audioReady;
   let activeSound;
+  let hasUserInteracted = false;
   try { soundEnabled = localStorage.getItem('cv1-flip-sound') !== 'off'; } catch { /* File storage may be unavailable. */ }
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   function updateSoundButton() {
@@ -36,7 +37,7 @@
     } catch { /* Audio must never prevent page navigation. */ }
   }
   function playPaperSound() {
-    if (!soundEnabled) return;
+    if (!soundEnabled || !hasUserInteracted) return;
     prepareAudio();
     if (!audioContext || !audioReady) return;
     const start = () => {
@@ -55,8 +56,12 @@
   if (!AudioContextClass) { soundEnabled = false; $('sound').disabled = true; $('sound').title = 'Sound is unavailable in this browser'; }
   updateSoundButton();
   // Unlock audio during a user gesture, including touch and keyboard navigation.
-  document.addEventListener('pointerdown', prepareAudio, { capture: true, passive: true });
-  document.addEventListener('keydown', prepareAudio, { capture: true });
+  function enableInteractiveAudio() {
+    hasUserInteracted = true;
+    prepareAudio();
+  }
+  document.addEventListener('pointerdown', enableInteractiveAudio, { capture: true, passive: true });
+  document.addEventListener('keydown', enableInteractiveAudio, { capture: true });
   $('sound').addEventListener('click', () => {
     soundEnabled = !soundEnabled;
     if (!soundEnabled && activeSound) { try { activeSound.stop(); } catch {} }
@@ -148,7 +153,7 @@
       if (!window.St || !St.PageFlip) throw new Error('The local page-flip.browser.js library is missing.');
       // Only the cover and first spread block the reveal. The remaining pages
       // stream in behind the book, so a visitor on a network connection is not
-      // held at the loading message until all 27 images have arrived.
+      // held at the loading message until all 39 images have arrived.
       await Promise.all(pages.slice(0, 3).map(src => new Promise((resolve, reject) => {
         const image = new Image(); image.onload = resolve;
         image.onerror = () => reject(new Error(`Could not load ${src}. Keep the pages folder beside index.html.`));
@@ -163,6 +168,13 @@
         // The book fills the screen; keep touch gestures with the page turner.
         mobileScrollSupport: false, swipeDistance: 30
       });
+      // Allow the silent corner preview once the book is visible. Hover uses
+      // fold_corner; only an intentional flip or drag moves the book and
+      // plays audio in the changeState handler below.
+      const moveBook = book.userMove.bind(book);
+      book.userMove = (point, isTouch) => {
+        if (ready && !reader.open) moveBook(point, isTouch);
+      };
       book.on('init', () => {
         // Let the library measure and render the cover before exposing it.
         // Keeping the book positioned inside the stage also prevents its
@@ -197,7 +209,7 @@
       });
       book.loadFromHTML(pageElements);
       new ResizeObserver(() => { if (ready) book.getUI().update(); }).observe($('stage'));
-    } catch (error) { $('loading').hidden = true; showError(`${error.message} The original CV 1.pdf is also included in the folder.`); }
+    } catch (error) { $('loading').hidden = true; showError(error.message); }
   }
   initialize();
 })();
