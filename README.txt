@@ -30,8 +30,8 @@ The local package does not create a public link until it is hosted.
 
 CONTENTS
 index.html, styles.css, app.js: local book viewer.
-pages/page-01.webp through page-39.webp: optimized copies of portfolio1/1.png
-  through portfolio1/39.png (1753 x 1240 pixels), in numeric order.
+pages/page-01.webp through page-39.webp: optimized portfolio images
+  (1753 x 1240 pixels), in numeric order. Page 33 is from page 33.png.
 page-flip.browser.js: StPageFlip v2.0.0 with a local cover-position fix.
 VENDOR-PATCHES.txt: details of the cover and shadow coordinate correction.
 LICENSE-StPageFlip.txt: its MIT license.
